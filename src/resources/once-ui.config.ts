@@ -21,7 +21,7 @@ const routes: RoutesConfig = {
   "/about": true,
   "/work": true,
   "/blog": true,
-  "/gallery": true,
+  "/gallery": false,
 };
 
 const display: DisplayConfig = {
@@ -187,17 +187,19 @@ const mailchimp: MailchimpConfig = {
 // default schema data
 const schema: SchemaConfig = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
+  type: "Person",
+  name: "Muskan Mishra",
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "muskan.mishra@fs-students.de",
 };
 
 // social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  linkedin: "https://www.linkedin.com/in/muskan-mishra-0806/",
+  threads: "",
+  discord: "",
+  // twitter: "https://twitter.com/muskanmishra", 
+  // instagram: "https://instagram.com/muskanmishra",
 };
 
 // social sharing configuration for blog posts

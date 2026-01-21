@@ -73,7 +73,7 @@ export const Header = () => {
         }}
       >
         <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
+          {display.location && <Row s={{ hide: true }}>Frankfurt, Germany</Row>}
         </Row>
         <Row fillWidth horizontal="center">
           <Row
@@ -133,16 +133,16 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="book"
-                      href="/blog"
+                      href="https://brewedbytes.substack.com"
                       label={blog.label}
-                      selected={pathname.startsWith("/blog")}
+                      selected={false}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="book"
-                      href="/blog"
-                      selected={pathname.startsWith("/blog")}
+                      href="https://brewedbytes.substack.com"
+                      selected={false}
                     />
                   </Row>
                 </>
