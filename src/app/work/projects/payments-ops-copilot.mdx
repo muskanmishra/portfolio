@@ -1,0 +1,47 @@
+---
+title: "Payments Ops Copilot"
+publishedAt: "2026-08-30"
+summary: "An agentic investigation assistant for payment operations, built around an evaluation harness that measures whether its answers can be trusted."
+images: []
+team:
+  - name: "Muskan Mishra"
+    role: "Technical Product Manager"
+    avatar: "/images/avatar-v2.jpg"
+    linkedIn: "https://www.linkedin.com/in/muskan-mishra-0806/"
+---
+
+## The problem
+
+Payment operations teams investigate incidents such as funds debited but never settled, duplicate bookings, stuck webhooks and reconciliation breaks. Today that means manually cross-referencing transaction databases, scheme documentation like the SEPA rulebooks, and internal runbooks. Investigations are slow, depend on tribal knowledge, and are most error-prone exactly when the stakes are highest.
+
+## The approach
+
+An ops analyst asks a question in natural language. The agent investigates by:
+
+- **Querying data through constrained, read-only tools**: looking up transactions, status histories, ledger entries and webhook events in a synthetic transactions database.
+- **Grounding scheme-level answers in SEPA documentation** through retrieval (RAG).
+- **Returning an evidenced answer, or refusing explicitly** when the evidence is insufficient.
+
+## What makes it different: the evaluation harness
+
+In payments, a wrong answer moves money. So the centerpiece of the project is not the agent but the harness that measures whether it can be trusted.
+
+The golden dataset contains 22 hand-written scenarios modelled on real payment-operations work, including:
+
+- Debited-but-never-settled investigations, confirmed duplicate bookings and their hard negatives, stuck and out-of-order webhooks, and reconciliation breaks.
+- SEPA rulebook questions, and questions that need both transaction data and scheme documentation, including time-dependent rules.
+- Refusal cases: missing records, questions outside the document corpus, and requests to take write actions.
+- Adversarial cases: prompt injection hidden inside transaction data, malformed input, false premises and ambiguous references.
+
+Each scenario specifies which tools the agent should call and which it must not call, the facts the answer must contain, the claims it must never make, and whether the correct behaviour is to refuse.
+
+## Tech stack
+
+- **LLM tool-calling** for the agent loop
+- **FastAPI** for the service layer
+- **PostgreSQL + pgvector** for transaction data and document retrieval
+- **AWS** for deployment
+
+## Status
+
+In progress. The project is a six-phase build, from the golden dataset through to deployment. The golden evaluation dataset is complete, and deployment is targeted for December 2026.
